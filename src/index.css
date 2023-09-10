@@ -1,13 +1,97 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-image: url("./Assets/background.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .header {
+    background-color: rgb(4, 85, 151);
+    color: white;
+    padding: 5px;
+    text-align: center;
+  }
+  .container {
+    height: 650px;
+    width: 40%;
+    margin: auto;
+    margin-top: 40px; 
+    padding: 10px;
+    border:8px solid rgb(4, 85, 151);
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .top-bar {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 20px;
+    background-color: #f6f0f0;
+    gap: 14px;
+  }
+  .city-input {
+    
+    border: none;
+    outline: none;
+    color: #626262;
+    padding-left: 40px;
+    font-size: 12px;
+    font-weight: 400;
+    background-color: #f6f0f0;
+  }
+  .search-img {
+    height: 40px;
+    border-radius: 40px;
+    cursor: pointer;
+    /* display: flex;
+    justify-content: center; */
+  }
+  .weather-image {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .weather-temp {
+    font-size: 80px;
+    font-weight: 400;
+    color: rgb(191, 10, 10);
+    display:flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+   .weather-loc{
+    font-size: 40px;
+    font-weight: 400;
+    color: rgb(15, 14, 14);
+    display:flex;
+    justify-content: center;
+    margin-top: 20px;
+  
+  }
+  .data-container{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+   
+  
+  }
+  .data-element{
+    display:flex;
+    gap:10px
+  }
+  .data-img{
+    height: 40px;
+  }
+  
+  
+  .footer {
+    height: 68px;
+    background-color: rgb(4, 85, 151);
+    margin:  20px 0;
+    color:whitesmoke;
+    text-align: center;
+  }
+  
