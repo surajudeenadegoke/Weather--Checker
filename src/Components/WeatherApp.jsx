@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import "../index.css";
 import Search from "../Assets/searchIcon.png";
-// import Clear from "../Assets/clear.jpeg";
+import Clear from "../Assets/clear.jpeg";
 import Cloud from "../Assets/cloud.png";
-// import Dizzle from "../Assets/dizzle.png"
+import Drizzle from "../Assets/drizzle.png";
 import Humidity from "../Assets/humidity.jpeg";
 import Rain from "../Assets/rain.png";
-// import Windy from "../Assets/windy.png"
+import Windy from "../Assets/windy.png"
 const WeatherApp = () => {
   const [city, setCity] = useState("Nigeria");
   const [temp, setTemp] = useState(35);
-  const [item, setItem] = useState("");
   const [humidity, setHumidity] = useState(60);
+  const [icon, setIcon] = useState(Clear);
   const handleChange = (event) => {
     setCity(event.target.value);
   };
@@ -19,18 +19,41 @@ const WeatherApp = () => {
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=Metric&appid=${api_key}`;
 
   const searchWeather = async () => {
-    try{
-    const response = await fetch(url);
-    const data = await response.json();
-    console.log(data);
-    setItem(data);
-    setTemp(Math.floor(item.main.temp));
-    setHumidity(item.main.humidity);
-    }catch(error){  
-console.error(error.message)
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      setTemp(Math.floor(data.main.temp));
+      setHumidity(data.main.humidity);
+      if (data.weather[0].icon === "01d" || data.weather[0].icon === "01n") {
+        setIcon(Clear);
+      } else if (
+        data.weather[0].icon === "02d" ||
+        data.weather[0].icon === "02n"
+      ) {
+        setIcon(Cloud);
+      } else if (
+        data.weather[0].icon === "03d" ||
+        data.weather[0].icon === "03n"
+      ) {
+        setIcon(Drizzle);
+      } else if (
+        data.weather[0].icon === "04d" ||
+        data.weather[0].icon === "04n"
+      ) {
+        setIcon(Drizzle);
+      }else if(data.weather[0].icon==="09d" || data.weather[0].icon==="09n"){
+        setIcon(Rain);
+      }else if(data.weather[0].icon==="10d" || data.weather[0].icon==="10n"){
+        setIcon(Rain);
+      }else if(data.weather[0].icon==="13d" || data.weather[0].icon==="13n"){
+        setIcon(Windy);
+      }else{
+        setIcon(Clear);
+      }
+    } catch (error) {
+      console.error(error.message);
     }
   };
-  console.log(temp)
   return (
     <div className="container">
       <div className="top-bar">
@@ -50,7 +73,7 @@ console.error(error.message)
         </div>
       </div>
       <div className="weather-image">
-        <img src={Cloud} alt="" />
+        <img src={icon} alt="" />
       </div>
       <div className="weather-temp">
         {temp} <sup>o</sup> c
